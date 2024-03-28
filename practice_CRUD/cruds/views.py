@@ -16,3 +16,18 @@ def detail(request, pk):
         'crud':crud,
     }
     return render(request, 'cruds/detail.html',context)
+
+def new(request):
+    return render(request,'cruds/new.html')
+
+def create(request):
+    print(request.GET)
+    title = request.GET.get('title')
+    content = request.GET.get('content')
+    # request를 받고 이를 DB에 등록하는 과정
+    cruds = CRUDS()
+    cruds.title = title
+    cruds.content = content
+    cruds.save()
+    
+    return render(request,'cruds/create.html')
