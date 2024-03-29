@@ -8,10 +8,12 @@
 <body>
     {% comment %} 새로 생성하는 창 {% endcomment %}
     <h1>NEW!</h1>
-    <form action="{% url "cruds:create" %}", method="GET">
+    <form action="{% url "cruds:create" %}", method="POST">
+        {% csrf_token %}
         <input type="text", name = 'title'>
         <textarea name="content"></textarea>
         <input type="submit">
     </form>
+    <p><a href="{% url "cruds:index" %}">Mainpage</a></p>
 </body>
 </html>

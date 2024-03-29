@@ -8,6 +8,14 @@
 <body>
     <h1>Detail</h1>
     <h2>{{ crud.pk }}</h2>
+    <form action="{% url "cruds:delete" crud.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value = 'DELETE'>
+    </form>
+    <p>
+    <a href="{% url "cruds:index" %}">MainPage</a>
+    <a href="{% url "cruds:edit" crud.pk %}">Change</a>
+    </p>
     <hr>
 </body>
 </html>
