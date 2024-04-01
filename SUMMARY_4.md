@@ -59,19 +59,3 @@ Article.objects.filter(content = 'abc')
 Article.objects.get(pk=1)
 ```
 
-# 실제로 적용하기 (Shell을 통한 데이터 수정, html파일에 표시)
-1. django, django-extensions, ipython 설치
-2. django-extensions / 앱 등록과정 필요 (settings.py)
-3. urls > views > templates/.html 과정을 거친다.
-4. models.py에 class를 정의한다. (DB의 틀을 잡기 위함)
-    - 틀을 잡은 이후에, python manage.py makemigrations, python manage.py migrate 과정 필
-5. Shell을 통한 데이터를 추가 및 수정을 진행한다.
-6. views파일을 확인한다. 여기서 다음의 과정을 추가한다.
-```python
-from .models import Query
-# Query는 models.py에서 정의한 class
-'''
-Query.objects.all() 등의 방법으로 데이터를 받는다.
-그리고 context에 값을 추가하고 render 마지막 변수로 context를 추가한다.
-'''
-```
