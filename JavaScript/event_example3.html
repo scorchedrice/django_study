@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bg-color {
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    .fs-2 {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>Input</h2>
+    <input type="text" class="text-input">
+    <span class="warning" style="color: red; display: none;">글자 수를 초과하였습니다.</span>
+    <p></p>
+  </div>
+  <div>
+    <h2>Color</h2>
+    <input type="text" class="color-input">
+  </div>
+
+  <script>
+    // 1. 타겟
+    const textInputTag = document.querySelector('.text-input')
+    const pTag = document.querySelector('p')
+    const warningTag = document.querySelector('.warning')
+    const colorInputTag = document.querySelector('.color-input')
+  
+    // 2. 콜백함수
+    const textInput = function (event) {
+      pTag.textContent = textInputTag.value
+      if (textInputTag.value.length > 5) {
+        pTag.style.display = 'None'
+        warningTag.style.display = ''
+      } else {
+        pTag.style.display = ''
+        warningTag.style.display = 'None'
+      }
+    }
+    const textFocus = function (event) {
+      if (event.type == 'focus') {
+        pTag.classList.add('bg-color')
+        pTag.classList.add('fs-2')
+      } else if (event.type == 'blur') {
+        pTag.classList.remove('bg-color')
+        pTag.classList.remove('fs-2')
+      }
+    }
+    const colorChange = function (event) {
+      pTag.style.color = colorInputTag.value
+    }
+    // 3. 핸들러
+    textInputTag.addEventListener('input',textInput)
+    textInputTag.addEventListener('focus',textFocus)
+    textInputTag.addEventListener('blur',textFocus)
+    colorInputTag.addEventListener('blur',colorChange)
+  </script>
+</body>
+
+</html>

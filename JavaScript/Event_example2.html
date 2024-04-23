@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .font-crimson {
+      color: crimson;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="heading">Hover me!</h1>
+  <h2 class="sub-heading">Double Click me!</h2>
+  <p class="contents">Lorem ipsum dolor sit amet consectetur</p>
+
+  <script>
+    const randomTexts = [
+      'Lorem ipsum dolor sit amet consectetu',
+      'adipisicing elit. Repellendus delectus quam',
+      'similique quo ipsam maxime totam alias',
+      'quibusdam repudiandae voluptas dicta',
+      'voluptas voluptatibus exercitationem officiis'
+    ]
+    // 아래에 코드 작성
+
+    // 1. 목표 설정
+    const h1Tag = document.querySelector('h1')
+    const h2Tag = document.querySelector('h2')
+    const pTag = document.querySelector('p')
+
+    // 2. 콜백함수 설정
+    // 2-1. h1Tag mouseover && mouseout
+    const detectMouseover = function (event) {
+      h1Tag.textContent = 'Hovered!'
+    }
+    const detectMouseout = function (event) {
+      h1Tag.textContent = 'Hover me!'
+    }
+    // 2-2. h2Tag dbclick
+    const doubleClick = function (event) {
+      console.log(event)
+      h2Tag.classList.toggle('font-crimson')
+    }
+    // 2-3. pTag random text
+    const scrollText = function (event) {
+      let idx = Math.random() * 4
+      idx = Math.round(idx)
+      pTag.textContent = randomTexts[idx]
+      console.log(pTag)
+    }
+    // 3. 핸들러 부착
+    // 3-1. h1Tag
+    h1Tag.addEventListener('mouseover', detectMouseover)
+    h1Tag.addEventListener('mouseout', detectMouseout)
+    // 3-2. h2Tag
+    h2Tag.addEventListener('dblclick', doubleClick)
+    // 3-3. pTag
+    pTag.addEventListener('wheel', scrollText)
+
+  </script>
+</body>
+
+</html>

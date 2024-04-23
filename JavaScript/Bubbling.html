@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        form
+        <div id="div">
+            div
+            <p id="p">p</p>
+        </div>
+    </form>
+</body>
+<script>
+    // 1. event의 대상이 되는 것들 지정
+    const formElement = document.querySelector('#form')
+    const divElement = document.querySelector('#div')
+    const pElement = document.querySelector('#p')
+
+    // 2. 이벤트 발생 시 작동시킬 함수 정의
+    const clickForm = function (event) {
+        console.log('form click')
+        console.log('.target|clickForm')
+        console.log(event.target)
+        console.log('.currrentTarget|clickForm')
+        console.log(event.currentTarget)
+    }
+    const clickDiv = function (event) {
+        console.log('div click')
+        console.log('.target|clickDiv')
+        console.log(event.target)
+        console.log('.currrentTarget|clickDiv')
+        console.log(event.currentTarget)
+    }
+    const clickP = function (event) {
+        console.log('p click')
+        console.log('.target|clickP')
+        console.log(event.target)
+        console.log('.currrentTarget|clickP')
+        console.log(event.currentTarget)
+    }
+
+    // 3. 이벤트 대상에 핸들러 부착
+    formElement.addEventListener('click',clickForm)
+    divElement.addEventListener('click',clickDiv)
+    pElement.addEventListener('click',clickP)
+</script>
+</html>
